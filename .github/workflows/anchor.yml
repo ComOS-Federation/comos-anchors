@@ -1,10 +1,10 @@
 # Hourly self-anchor of the ComOS Federation's disclosed hash chains: the
-# key-binding attestation chain (CO 324-001) and the track-record chain
-# (CO 571). Fetches each publicly disclosed chain head and, when it has
-# changed, appends one JSONL line to anchors/<chain>.jsonl and commits. Uses
-# only the default GITHUB_TOKEN — this repo carries no secrets and no branch
-# protection; its value is its append-only public history, not its write
-# controls.
+# key-binding attestation chain (CO 324-001), the track-record chain (CO 571)
+# and the seal chain over the tool-invocation log (CO 784). Fetches each
+# publicly disclosed chain head and, when it has changed, appends one JSONL
+# line to anchors/<chain>.jsonl and commits. Uses only the default
+# GITHUB_TOKEN — this repo carries no secrets and no branch protection; its
+# value is its append-only public history, not its write controls.
 
 name: anchor
 
@@ -64,6 +64,7 @@ jobs:
 
           anchor_chain key-attestation-chain
           anchor_chain track-record-chain
+          anchor_chain tool-invocation-log
 
       - name: Commit + push (skip if nothing new)
         run: |
